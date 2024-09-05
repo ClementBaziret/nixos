@@ -3,10 +3,12 @@
 {
   programs.git = {
     enable = true;
-    user = {
-      email = "bob@work.example.com";
-      name = "Bob Work";
-    };
+    userName = "Clément Baziret";
+    userEmail = "clement.baziret@epitech.eu";
+    # user = {
+    #   email = "bob@work.example.com";
+    #   name = "Bob Work";
+    # };
     prompt.enable = true;
     config = {
       init.defaultBranch = "main";

@@ -10,6 +10,7 @@
     ./vscode.nix
     ./gnome.nix
     ./bash.nix
+    ./git.nix
   ];
 
   home.sessionVariables = {
