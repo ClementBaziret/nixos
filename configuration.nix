@@ -4,16 +4,20 @@
 
 { config, pkgs, inputs, ... }:
 
+let 
+  home-manager-path = ./home-manager/home.nix;
+in 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
+      ./system-wide/hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -94,7 +98,7 @@
     backupFileExtension = "hm-backup";
     extraSpecialArgs = {inherit inputs;};
     users = {
-      "cbaziret" = import ./home-manager/home.nix;
+      "cbaziret" = import home-manager-path;
     };
   };
 
@@ -122,6 +126,9 @@
 
   # List of the nix packages installed system-wide
   environment.systemPackages = with pkgs; [
+    # Nix important packages
+    home-manager
+
     # User softwares
     vim
     vscode
