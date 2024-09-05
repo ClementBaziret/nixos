@@ -27,7 +27,7 @@
       "terminal.integrated.fontFamily" = "MartianMono Nerd Font";
       "terminal.integrated.fontSize" = 14;
       "terminal.integrated.tabs.focusMode" = "singleClick";
-
+      "terminal.integrated.defaultLocation" = "editor";
       "terminal.integrated.shellIntegration.enabled" = false;
 
       "workbench.colorTheme" = "Night Owl (No Italics)";

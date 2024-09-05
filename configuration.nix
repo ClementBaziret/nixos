@@ -109,6 +109,11 @@ in
 
   boot.loader.grub.configurationLimit = 15;
 
+  programs.git.config = {
+    init.defaultBranch = "main";
+    prompt.enable = true;
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
