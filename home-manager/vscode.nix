@@ -1,18 +1,37 @@
 { config, pkgs, lib, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
 
     extensions = with pkgs.vscode-extensions; [
-      # equinusocio.vsc-material-theme-icons
+      # Graphical extensions
+      jdinhlife.gruvbox
 
-      # bbenoist.nix
-      # dart-code.dart-code
-      # dart-code.flutter
+      # Utility extensions
+      vscode-icons-team.vscode-icons
+      eamodio.gitlens
+      ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-containers
+      adpyke.codesnap
 
-      # sdras.night-owl
+      # Code language extensions
+      ms-vscode.cpptools
+      dart-code.flutter
+      dart-code.dart-code
+      ms-python.python
+      ms-python.debugpy
+      ms-python.vscode-pylance
+      rust-lang.rust-analyzer
+      haskell.haskell
+
+      # Nix related extensions
+      bbenoist.nix
+      jnoortheen.nix-ide
+      # mkhl-direnv
     ];
 
     keybindings = [
@@ -30,8 +49,8 @@
       "terminal.integrated.defaultLocation" = "editor";
       "terminal.integrated.shellIntegration.enabled" = false;
 
-      "workbench.colorTheme" = "Night Owl (No Italics)";
-      "workbench.iconTheme" = "eq-material-theme-icons";
+      "workbench.colorTheme" = "Gruvbox Dark Hard";
+      "workbench.iconTheme" = "vscode-icons";
 
       "files.autoSave" = "onFocusChange";
 
@@ -44,6 +63,15 @@
         "editor.tabCompletion" = "onlySnippets";
         "editor.wordBasedSuggestions" = "off";
       };
+
+      "codesnap.roundedCorners" = true;
+      "codesnap.realLineNumbers" = false;
+      "codesnap.showWindowControls" = false;
+      "codesnap.showWindowTitle" = true;
+      "codesnap.shutterAction" = "copy";
+      "codesnap.target" = "container";
+      "codesnap.transparentBackground" = true;
+      "codesnap.showLineNumbers" = true;
     };
   };
 
