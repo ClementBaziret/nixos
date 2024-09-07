@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 
+rec
 {
   home.username = "cbaziret";
   home.homeDirectory = "/home/cbaziret";
@@ -11,6 +12,7 @@
     ./gnome.nix
     ./bash.nix
     ./git.nix
+    (import ./starship/starship.nix {inherit lib; inherit (home) username;})
   ];
 
   home.sessionVariables = {
