@@ -110,7 +110,6 @@ in
     vscode
     discord
     teams-for-linux
-    google-chrome
 
     # Utility software
     git
@@ -123,6 +122,7 @@ in
     sqlite
     postman
     docker-compose
+    nerdfonts
 
     # Gnome related
     gnome.gnome-tweaks
