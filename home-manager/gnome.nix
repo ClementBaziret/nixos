@@ -26,6 +26,7 @@
 
         ];
       };
+      # Gnome general settings
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
@@ -36,7 +37,8 @@
         command = "gnome-terminal";
         name = "Open Terminal";
       };
-      # Configure individual extensions
+
+      # Gnome extensions settings
       # "org/gnome/shell/extensions/dash-to-panel/" = {
       #   # brightness = 0.75;
       #   # noise-amount = 0;
@@ -44,5 +46,51 @@
       #   panel-sizes = ({"0":80,"1":80});
       # };
     };
+  };
+
+  # Gnome Terminal dconf paths
+  # /org/gnome/terminal/legacy/profiles:/list -> list of profiles
+  # /org/gnome/terminal/legacy/profiles:/:uuid/ -> access a profile 
+  # /org/gnome/terminal/legacy/profiles:/:57fff6a1-acae-4d70-8807-51f5523d512e
+
+  programs.gnome-terminal = {
+    enable = true;
+    # showMenubar = false;
+
+    profile = {
+      "2856b679-dc91-4978-b668-5e0d6550f1c8" = {
+        default = true;
+        visibleName = "my-config";
+        font = "FiraMono Nerd Font 12";
+      };
+    };
+
+#       showScrollbar = false;
+# #      transparencyPercent = 90;
+        
+#       colors = {
+#         palette = [
+#           "#1c2023"
+#           "#c7ae95"
+#           "#95c7ae"
+#           "#aec795"
+#           "#ae95c7"
+#           "#c795ae"
+#           "#95aec7"
+#           "#c7ccd1"
+#           "#747c84"
+#           "#c7ae95"
+#           "#95c7ae"
+#           "#aec795"
+#           "#ae95c7"
+#           "#c795ae"
+#           "#95aec7"
+#           "#f3f4f5"
+#         ];
+
+#         backgroundColor = "#1c2023";
+#         foregroundColor = "#c7ccd1";
+#       };
+    # };
   };
 }
