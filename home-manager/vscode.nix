@@ -46,13 +46,15 @@
       "terminal.integrated.fontFamily" = "MartianMono Nerd Font";
       "terminal.integrated.fontSize" = 14;
       "terminal.integrated.tabs.focusMode" = "singleClick";
-      "terminal.integrated.defaultLocation" = "editor";
+      "terminal.integrated.defaultLocation" = "view";
       "terminal.integrated.shellIntegration.enabled" = false;
 
       "workbench.colorTheme" = "Gruvbox Dark Hard";
       "workbench.iconTheme" = "vscode-icons";
 
       "files.autoSave" = "onFocusChange";
+
+      "editor.hover.delay" = 450;
 
       "[dart]" = {
         "editor.formatOnSave" = true;
