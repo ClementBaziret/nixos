@@ -26,8 +26,8 @@ in
       add_newline = true;
 
       format = lib.concatStrings [
-        "$username"
-        "$directory"
+        "\\[$username\\]"
+        "\\[$directory\\]"
         "$git_branch"
         "$git_status"
         "$git_state"
@@ -35,45 +35,38 @@ in
 
         "$line_break"
 
-        "[ ](fg:${m_prestatus.bg})"
-        "[ ](bg:${m_prestatus.bg})"
         "$shlvl"
-        "$character"
         "$status"
-        "[ ](fg:prev_bg)"
+        "$character "
       ];
 
      shlvl = {
         disabled = false;
-        repeat = true;
         threshold = 1;
-        symbol = "[](${inv_style_str m_shlvl})[](${style_str m_shlvl})";
-        format = "[$symbol]($style)";
-        style = style_str m_directory;
+        symbol = "";
+        format = "[ $shlvl$symbol ]($style)";
+        style = "bright-green";
       };
       username = {
         show_always = true;
-        style_user = style_str m_username;
-        style_root = style_str m_username_root;
-        format = lib.concatStrings [
-          "[](fg:${m_username.bg} bg:prev_bg)"
-          "[ ( $user) ]($style)"
-          "[ ](fg:${m_username.bg} bg:${m_directory.bg})"
-        ];
-        aliases = { "${username}" = ""; };
+        style_user = "bold yellow";
+        style_root = "bold red";
+        format = "[$user]($style)";
+        # aliases = { "${username}" = ""; };
       };
       directory = {
         truncation_symbol = "…/";
-        truncation_length = 2;
-        style = style_str m_directory;
-        read_only_style = style_str m_directory_lock;
+        truncation_length = 3;
+        truncate_to_repo = false;
+        style = "bold blue";
+        read_only_style = "white";
         read_only = " ";
-        format = "[ [$read_only]($read_only_style)$path]($style)";
+        format = "[$read_only]($read_only_style)[$path]($style)";
       };
       git_branch = {
         style = style_str m_git_branch;
         symbol = " ";
-        format = "[](fg:prev_bg bg:${m_git_branch.bg})[ $symbol$branch]($style)";
+        format = "[ $symbol$branch]($style)";
       };
       git_status = let
         subm = symbol: " ${symbol} \${count} ";
@@ -112,14 +105,14 @@ in
         format = "[ | $state(: $progress_current/$progress_total)]($style)";
       };
       character = {
-        success_symbol = "[   ](fg:prev_bg bg:bright-green)";
-        error_symbol = "[ ](fg:prev_bg bg:red)";
+        success_symbol = "[](bright-green)";
+        error_symbol = "[](bright-red)";
         format = "$symbol";
       };
       status = {
         disabled = false;
         format = "[$status ]($style)";
-        style = "fg:bold bright-white bg:red";
+        style = "bold fg:bright-red";
       };
     };
   };
