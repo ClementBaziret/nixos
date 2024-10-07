@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;    #
 
   programs.vscode = {
     enable = true;
@@ -12,6 +12,8 @@
       jdinhlife.gruvbox
 
       # Utility extensions
+      ms-vscode-remote.remote-ssh
+      ritwickdey.liveserver
       vscode-icons-team.vscode-icons
       eamodio.gitlens
       ms-azuretools.vscode-docker
@@ -20,6 +22,9 @@
 
       # Code language extensions
       ms-vscode.cpptools
+      xaver.clang-format
+      ms-vscode.cmake-tools
+      twxs.cmake
       dart-code.flutter
       dart-code.dart-code
       ms-python.python
