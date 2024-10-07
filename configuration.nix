@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 let 
   home-manager-path = ./home-manager/home.nix;
@@ -55,6 +55,11 @@ in
     #jack.enable = true;
   };
 
+  swapDevices = [{
+    device = "/swapfile";
+    size = 8 * 1024; # 16GB
+  }];
+
   users.users.cbaziret = {
     isNormalUser = true;
     description = "Clément Baziret";
@@ -77,6 +82,7 @@ in
   # services.gnome.core-utilities.enable = false;  # disable all the gnome default applications 
   environment.gnome.excludePackages = with pkgs; [
     gnome-console
+    epiphany  # web browser
   ];
 
   boot.loader.grub.configurationLimit = 15;
@@ -97,19 +103,45 @@ in
 
   virtualisation.docker.enable = true;
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    libxl
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
+
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "cbaziret" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.draganddrop = true;
+  virtualisation.virtualbox.guest.clipboard = true;
+
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+  builtins.elem (lib.getName pkg) [
+    # Add additional package names here
+    pkgs.teams
+    pkgs.vscode
+  ];
 
   # List of the nix packages installed system-wide
   environment.systemPackages = with pkgs; [
     # Nix important packages
     home-manager
     neofetch
+    steam-run   # to use for classic linux distros
 
     # User softwares
     vim
     vscode
     discord
     teams-for-linux
+    tuxpaint
+    filezilla
 
     # Utility software
     git
@@ -123,6 +155,12 @@ in
     postman
     docker-compose
     nerdfonts
+    mediawriter
+    grub2
+    gparted
+    zip
+    unzip
+    gnutar
 
     # Gnome related
     gnome.gnome-tweaks
