@@ -1,6 +1,13 @@
 { config, pkgs, lib, ... }:
 
 {
+  programs.eza = {
+    enable = true;
+    enableBashIntegration = true;
+    git = true;
+    icons = true;
+  };
+
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -28,6 +35,7 @@
 
       # Utility aliases
       # cat = "bat";
+      tree = "eza -T";
     };
   };
 }
