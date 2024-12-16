@@ -131,6 +131,8 @@ in
   ];
 
   networking.firewall.allowedUDPPorts = [ 8080 ];
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.enable = false;
 
   # List of the nix packages installed system-wide
   environment.systemPackages = with pkgs; [
@@ -184,10 +186,6 @@ in
   # ];
 
   # services.openssh.enable = true;
-
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # networking.firewall.enable = false;
 
   system.stateVersion = "24.05";
 }
