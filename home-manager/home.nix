@@ -37,7 +37,10 @@ rec
   # Home Manager is pretty good at managing dotfiles. The primary 
   # way to manage plain files is through 'home.file'.
   home.file = {
-
+    ".bash_completion".text = ''
+      COMPAL_AUTO_UNMASK=1
+      source ${pkgs.complete-alias}/bin/complete_alias
+    '';
   };
 
   programs.home-manager.enable = true;
