@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;    #
+  nixpkgs.config.allowUnfree = true;
 
   programs.vscode = {
     enable = true;
@@ -19,6 +19,9 @@
       ms-azuretools.vscode-docker
       ms-vscode-remote.remote-containers
       adpyke.codesnap
+      iliazeus.vscode-ansi
+      vadimcn.vscode-lldb
+      ms-vscode.live-server
 
       # Code language extensions
       ms-vscode.cpptools
@@ -32,6 +35,8 @@
       ms-python.vscode-pylance
       rust-lang.rust-analyzer
       haskell.haskell
+      vue.volar
+      ecmel.vscode-html-css
 
       # Nix related extensions
       bbenoist.nix
@@ -54,11 +59,20 @@
       "terminal.integrated.defaultLocation" = "view";
       "terminal.integrated.shellIntegration.enabled" = false;
 
+      # Needed in order to make interactive shells work in vscode
+      "terminal.integrated.profiles.linux" = {
+        "bash" = {
+            "path" = "~/.bashrc";
+            "icon" = "terminal-bash";
+        };
+      };
+
       "workbench.colorTheme" = "Gruvbox Dark Hard";
       "workbench.iconTheme" = "vscode-icons";
 
       "files.autoSave" = "onFocusChange";
 
+      # "editor.formatOnSave" = true;
       "editor.hover.delay" = 450;
 
       "[dart]" = {
