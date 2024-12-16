@@ -8,7 +8,7 @@
     icons = true;
   };
 
-  programs.bash = {
+  programs.bash = rec {
     enable = true;
     enableCompletion = true;
     initExtra = ""; # "'echo test' 'echo test'"
@@ -29,6 +29,7 @@
       gcl = "git clone";
       gsth = "git stash";
       gsthp = "git stash pop";
+      gsw = "git switch";
 
       # SSH key aliases
       "new-ssh-key" = "ssh-keygen -t ed25519 -C 'clement.baziret@epitech.eu'";
@@ -37,5 +38,14 @@
       # cat = "bat";
       tree = "eza -T";
     };
+
+    bashrcExtra = let
+      foldOnAttributes = f: lib.attrsets.foldlAttrs (acc: name: _: f acc name);
+      complete-alias-commands = foldOnAttributes (acc: aliasName: acc + ''
+        complete -F _complete_alias ${aliasName}
+      '') "" shellAliases;
+    in ''
+      ${complete-alias-commands}
+    '';
   };
 }
