@@ -20,10 +20,10 @@
           gnomeExtensions.dash-to-panel.extensionUuid
           gnomeExtensions.vitals.extensionUuid
           gnomeExtensions.pop-shell.extensionUuid
+          gnomeExtensions.quick-settings-tweaker.extensionUuid
           # gnomeExtensions.appindicator.extensionUuid
           # gnomeExtensions.places-status-indicator.extensionUuid
           # gnomeExtensions.freon.extensionUuid
-
         ];
       };
       # Gnome general settings
