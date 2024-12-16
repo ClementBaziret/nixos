@@ -106,6 +106,8 @@ in
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     libxl
+    glibc
+    gcc.cc.lib
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
   ];
@@ -127,6 +129,8 @@ in
     pkgs.teams
     pkgs.vscode
   ];
+
+  networking.firewall.allowedUDPPorts = [ 8080 ];
 
   # List of the nix packages installed system-wide
   environment.systemPackages = with pkgs; [
