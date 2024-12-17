@@ -1,13 +1,18 @@
-{ config, pkgs, inputs, lib, ... }:
-
-let 
-  # home-manager-path = ./home-manager/home.nix;
-in 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
+
+let
+in
+# home-manager-path = ./home-manager/home.nix;
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -50,25 +55,31 @@ in
     #jack.enable = true;
   };
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 8 * 1024; # 16GB
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 8 * 1024; # 16GB
+    }
+  ];
 
   users.users.cbaziret = {
     isNormalUser = true;
     description = "Clément Baziret";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     packages = with pkgs; [
     ];
   };
 
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  # services.gnome.core-utilities.enable = false;  # disable all the gnome default applications 
+  # services.gnome.core-utilities.enable = false;  # disable all the gnome default applications
   environment.gnome.excludePackages = with pkgs; [
     gnome-console
-    epiphany  # web browser
+    epiphany # web browser
   ];
 
   boot.loader.grub.configurationLimit = 15;
@@ -98,8 +109,10 @@ in
     # here, NOT in environment.systemPackages
   ];
 
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # virtualisation.virtualbox.host.enable = true;
   # users.extraGroups.vboxusers.members = [ "cbaziret" ];
@@ -108,13 +121,13 @@ in
   # virtualisation.virtualbox.guest.dragAndDrop = true;
   # virtualisation.virtualbox.guest.clipboard = true;
 
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-  builtins.elem (lib.getName pkg) [
-    # Add additional package names here
-    pkgs.teams
-    pkgs.vscode
-  ];
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      # Add additional package names here
+      pkgs.teams
+      pkgs.vscode
+    ];
 
   networking.firewall.allowedUDPPorts = [ 8080 ];
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -125,7 +138,7 @@ in
     # Nix important packages
     home-manager
     neofetch
-    steam-run   # to use for classic linux distros
+    steam-run # to use for classic linux distros
 
     # User softwares
     vim
@@ -153,6 +166,7 @@ in
     zip
     unzip
     gnutar
+    nixfmt-rfc-style
 
     # Gnome related
     gnome-tweaks

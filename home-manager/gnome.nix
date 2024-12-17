@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -50,7 +55,7 @@
 
   # Gnome Terminal dconf paths
   # /org/gnome/terminal/legacy/profiles:/list -> list of profiles
-  # /org/gnome/terminal/legacy/profiles:/:uuid/ -> access a profile 
+  # /org/gnome/terminal/legacy/profiles:/:uuid/ -> access a profile
   # /org/gnome/terminal/legacy/profiles:/:57fff6a1-acae-4d70-8807-51f5523d512e
 
   programs.gnome-terminal = {
@@ -64,33 +69,5 @@
         font = "FiraMono Nerd Font 12";
       };
     };
-
-#       showScrollbar = false;
-# #      transparencyPercent = 90;
-        
-#       colors = {
-#         palette = [
-#           "#1c2023"
-#           "#c7ae95"
-#           "#95c7ae"
-#           "#aec795"
-#           "#ae95c7"
-#           "#c795ae"
-#           "#95aec7"
-#           "#c7ccd1"
-#           "#747c84"
-#           "#c7ae95"
-#           "#95c7ae"
-#           "#aec795"
-#           "#ae95c7"
-#           "#c795ae"
-#           "#95aec7"
-#           "#f3f4f5"
-#         ];
-
-#         backgroundColor = "#1c2023";
-#         foregroundColor = "#c7ccd1";
-#       };
-    # };
   };
 }

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs.eza = {
@@ -40,13 +45,24 @@
       tree = "eza -T";
     };
 
-    bashrcExtra = let
-      foldOnAttributes = f: lib.attrsets.foldlAttrs (acc: name: _: f acc name);
-      complete-alias-commands = foldOnAttributes (acc: aliasName: acc + ''
-        complete -F _complete_alias ${aliasName}
-      '') "" shellAliases;
-    in ''
-      ${complete-alias-commands}
-    '';
+    bashrcExtra =
+      let
+        foldOnAttributes =
+          f:
+          lib.attrsets.foldlAttrs (
+            acc: name: _:
+            f acc name
+          );
+        complete-alias-commands = foldOnAttributes (
+          acc: aliasName:
+          acc
+          + ''
+            complete -F _complete_alias ${aliasName}
+          ''
+        ) "" shellAliases;
+      in
+      ''
+        ${complete-alias-commands}
+      '';
   };
 }

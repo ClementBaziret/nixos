@@ -1,18 +1,25 @@
-{ config, pkgs, lib, ... }:
-
-rec
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+
+rec {
   home.username = "cbaziret";
   home.homeDirectory = "/home/cbaziret";
-  
+
   home.stateVersion = "24.11";
-  
+
   imports = [
     ./vscode.nix
     ./gnome.nix
     ./bash.nix
     ./git.nix
-    (import ./starship/starship.nix {inherit lib; inherit (home) username;})
+    (import ./starship/starship.nix {
+      inherit lib;
+      inherit (home) username;
+    })
   ];
 
   home.sessionVariables = {
@@ -30,7 +37,7 @@ rec
     # '')
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary 
+  # Home Manager is pretty good at managing dotfiles. The primary
   # way to manage plain files is through 'home.file'.
   home.file = {
     ".bash_completion".text = ''

@@ -1,19 +1,46 @@
 { lib, ... }:
 
-let 
+let
   style_str = { bg, fg }: "bg:${bg} fg:${fg}";
   inv_style_str = { bg, fg }: "bg:${fg} fg:${bg}";
 
   prompt_ok = "bright-green";
-  prompt_ko = { bg ="bright-red"; fg = "white"; };
-  directory = { bg = "blue"; fg = "bold bright-white"; };
-  directory_lock = { bg = directory.bg; fg = "bold bright-yellow"; };
-  username = { bg = "bright-white"; fg = "black"; };
-  username_root = { bg = username.bg; fg = "bold dimmed red"; };
-  git_branch = { bg = "cyan"; fg = "bold bright-white"; };
-  status = { bg = "dimmed red"; fg = "bold bright-white"; };
-  prestatus = { bg = "bright-black"; fg = "bright-white"; };
-  shlvl = { bg = prestatus.bg; fg = "purple"; };
+  prompt_ko = {
+    bg = "bright-red";
+    fg = "white";
+  };
+  directory = {
+    bg = "blue";
+    fg = "bold bright-white";
+  };
+  directory_lock = {
+    bg = directory.bg;
+    fg = "bold bright-yellow";
+  };
+  username = {
+    bg = "bright-white";
+    fg = "black";
+  };
+  username_root = {
+    bg = username.bg;
+    fg = "bold dimmed red";
+  };
+  git_branch = {
+    bg = "cyan";
+    fg = "bold bright-white";
+  };
+  status = {
+    bg = "dimmed red";
+    fg = "bold bright-white";
+  };
+  prestatus = {
+    bg = "bright-black";
+    fg = "bright-white";
+  };
+  shlvl = {
+    bg = prestatus.bg;
+    fg = "purple";
+  };
 in
 {
   programs.starship = {
@@ -41,7 +68,7 @@ in
         "[ ](fg:prev_bg)"
       ];
 
-     shlvl = {
+      shlvl = {
         disabled = false;
         repeat = true;
         threshold = 1;
@@ -58,7 +85,9 @@ in
           "[ ( $user) ]($style)"
           "[ ](fg:${username.bg} bg:${directory.bg})"
         ];
-        aliases = { "fcharpentier" = ""; };
+        aliases = {
+          "fcharpentier" = "";
+        };
       };
       directory = {
         truncation_symbol = "…/";
@@ -74,15 +103,17 @@ in
         format = "[](fg:prev_bg bg:${git_branch.bg})[ $symbol $branch]($style)";
       };
       git_status = {
-        format = "[$ahead_behind ${lib.concatStrings [
-          "$conflicted"
-          "$untracked"
-          "$renamed"
-          "$modified"
-          "$staged"
-          "$deleted"
-          "$stashed"
-        ]}]($style)";
+        format = "[$ahead_behind ${
+          lib.concatStrings [
+            "$conflicted"
+            "$untracked"
+            "$renamed"
+            "$modified"
+            "$staged"
+            "$deleted"
+            "$stashed"
+          ]
+        }]($style)";
         style = style_str git_branch;
 
         ahead = "⇡\${count}";

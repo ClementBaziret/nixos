@@ -1,20 +1,30 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   nixpkgs.config.allowUnfreePredicate =
-    pkg: builtins.elem (lib.getName pkg) (lib.map lib.getName (with pkgs; [
-        vscode
-      ] ++ (with pkgs.vscode-extensions; [
-        ms-vscode-remote.remote-ssh
-        ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-containers
-        ms-vscode.live-server
-        ms-vscode.cpptools
-        ms-vscode.cmake-tools
-        ms-python.python
-        ms-python.debugpy
-        ms-python.vscode-pylance
-      ])
+    pkg:
+    builtins.elem (lib.getName pkg) (
+      lib.map lib.getName (
+        with pkgs;
+        [
+          vscode
+        ]
+        ++ (with pkgs.vscode-extensions; [
+          ms-vscode-remote.remote-ssh
+          ms-azuretools.vscode-docker
+          ms-vscode-remote.remote-containers
+          ms-vscode.live-server
+          ms-vscode.cpptools
+          ms-vscode.cmake-tools
+          ms-python.python
+          ms-python.debugpy
+          ms-python.vscode-pylance
+        ])
       )
     );
 
@@ -57,6 +67,7 @@
       bbenoist.nix
       jnoortheen.nix-ide
       # mkhl-direnv
+      brettm12345.nixfmt-vscode
     ];
 
     keybindings = [
@@ -77,8 +88,8 @@
       # Needed in order to make interactive shells work in vscode
       "terminal.integrated.profiles.linux" = {
         "bash" = {
-            "path" = "~/.bashrc";
-            "icon" = "terminal-bash";
+          "path" = "~/.bashrc";
+          "icon" = "terminal-bash";
         };
       };
 
@@ -87,7 +98,7 @@
 
       "files.autoSave" = "onFocusChange";
 
-      # "editor.formatOnSave" = true;
+      "editor.formatOnSave" = true;
       "editor.hover.delay" = 450;
 
       "[dart]" = {
