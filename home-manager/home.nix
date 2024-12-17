@@ -5,7 +5,7 @@ rec
   home.username = "cbaziret";
   home.homeDirectory = "/home/cbaziret";
   
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   
   imports = [
     ./vscode.nix

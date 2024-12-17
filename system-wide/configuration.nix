@@ -1,17 +1,12 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, inputs, lib, ... }:
 
 let 
-  home-manager-path = ./home-manager/home.nix;
+  # home-manager-path = ./home-manager/home.nix;
 in 
 {
   imports =
     [
-      ./system-wide/hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
+      ./hardware-configuration.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -68,15 +63,6 @@ in
     ];
   };
 
-  home-manager = {
-    # also pass inputs to home-manager modules
-    backupFileExtension = "hm-backup";
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "cbaziret" = import home-manager-path;
-    };
-  };
-
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   # services.gnome.core-utilities.enable = false;  # disable all the gnome default applications 
@@ -115,12 +101,12 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "cbaziret" ];
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  virtualisation.virtualbox.guest.enable = true;
-  virtualisation.virtualbox.guest.draganddrop = true;
-  virtualisation.virtualbox.guest.clipboard = true;
+  # virtualisation.virtualbox.host.enable = true;
+  # users.extraGroups.vboxusers.members = [ "cbaziret" ];
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.guest.enable = true;
+  # virtualisation.virtualbox.guest.dragAndDrop = true;
+  # virtualisation.virtualbox.guest.clipboard = true;
 
 
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -169,9 +155,9 @@ in
     gnutar
 
     # Gnome related
-    gnome.gnome-tweaks
-    gnome.gnome-terminal
-    gnome.dconf-editor
+    gnome-tweaks
+    gnome-terminal
+    dconf-editor
 
     # man and documentation
     man

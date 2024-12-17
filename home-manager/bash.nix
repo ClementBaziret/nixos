@@ -5,16 +5,17 @@
     enable = true;
     enableBashIntegration = true;
     git = true;
-    icons = true;
+    icons = "auto";
   };
 
   programs.bash = rec {
     enable = true;
     enableCompletion = true;
-    initExtra = ""; # "'echo test' 'echo test'"
+    initExtra = "";
     shellAliases = {
       # NixOS related aliases
-      rebuild = "sudo nixos-rebuild switch --flake /home/cbaziret/nixos/#default";
+      rebuild = "sudo nixos-rebuild switch --flake /home/cbaziret/nixos/system-wide/#default";
+      rebuild-hm = "home-manager switch --flake /home/cbaziret/nixos/home-manager/#cbaziret";
       configuration-doc = "man configuration.nix";
       home-manager-doc = "man home-configuration.nix";
 
