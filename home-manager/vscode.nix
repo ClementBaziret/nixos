@@ -1,7 +1,22 @@
 { config, pkgs, lib, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate =
+    pkg: builtins.elem (lib.getName pkg) (lib.map lib.getName (with pkgs; [
+        vscode
+      ] ++ (with pkgs.vscode-extensions; [
+        ms-vscode-remote.remote-ssh
+        ms-azuretools.vscode-docker
+        ms-vscode-remote.remote-containers
+        ms-vscode.live-server
+        ms-vscode.cpptools
+        ms-vscode.cmake-tools
+        ms-python.python
+        ms-python.debugpy
+        ms-python.vscode-pylance
+      ])
+      )
+    );
 
   programs.vscode = {
     enable = true;

@@ -20,10 +20,6 @@ rec
     BAR = "${config.home.sessionVariables.FOO} World!";
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "vscode"
-  ];
-
   home.packages = with pkgs; [
 
     # # You can also create simple shell scripts directly inside your
