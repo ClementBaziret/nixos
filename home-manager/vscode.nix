@@ -64,10 +64,8 @@
       ecmel.vscode-html-css
 
       # Nix related extensions
-      bbenoist.nix
       jnoortheen.nix-ide
       # mkhl-direnv
-      brettm12345.nixfmt-vscode
     ];
 
     keybindings = [
@@ -77,49 +75,63 @@
         when = null;
       }
     ];
-
-    userSettings = {
-      "terminal.integrated.fontFamily" = "MartianMono Nerd Font";
-      "terminal.integrated.fontSize" = 14;
-      "terminal.integrated.tabs.focusMode" = "singleClick";
-      "terminal.integrated.defaultLocation" = "view";
-      "terminal.integrated.shellIntegration.enabled" = false;
-
-      # Needed in order to make interactive shells work in vscode
-      "terminal.integrated.profiles.linux" = {
-        "bash" = {
-          "path" = "~/.bashrc";
-          "icon" = "terminal-bash";
-        };
-      };
-
-      "workbench.colorTheme" = "Gruvbox Dark Hard";
-      "workbench.iconTheme" = "vscode-icons";
-
-      "files.autoSave" = "onFocusChange";
-
-      "editor.formatOnSave" = true;
-      "editor.hover.delay" = 450;
-
-      "[dart]" = {
-        "editor.formatOnSave" = true;
-        "editor.formatOnType" = false;
-
-        "editor.rulers" = [ 80 ];
-        "editor.selectionHighlight" = false;
-        "editor.tabCompletion" = "onlySnippets";
-        "editor.wordBasedSuggestions" = "off";
-      };
-
-      "codesnap.roundedCorners" = true;
-      "codesnap.realLineNumbers" = false;
-      "codesnap.showWindowControls" = false;
-      "codesnap.showWindowTitle" = true;
-      "codesnap.shutterAction" = "copy";
-      "codesnap.target" = "container";
-      "codesnap.transparentBackground" = true;
-      "codesnap.showLineNumbers" = true;
-    };
+    userSettings = builtins.fromJSON ''
+      {
+        "[dart]": {
+          "editor.formatOnSave": true,
+          "editor.formatOnType": false,
+          "editor.rulers": [
+            80
+          ],
+          "editor.selectionHighlight": false,
+          "editor.tabCompletion": "onlySnippets",
+          "editor.wordBasedSuggestions": "off"
+        },
+        "codesnap.realLineNumbers": false,
+        "codesnap.roundedCorners": true,
+        "codesnap.showLineNumbers": true,
+        "codesnap.showWindowControls": false,
+        "codesnap.showWindowTitle": true,
+        "codesnap.shutterAction": "copy",
+        "codesnap.target": "container",
+        "codesnap.transparentBackground": true,
+        "editor.formatOnSave": true,
+        "editor.hover.delay": 450,
+        "files.autoSave": "onFocusChange",
+        "terminal.integrated.defaultLocation": "view",
+        "terminal.integrated.fontFamily": "MartianMono Nerd Font",
+        "terminal.integrated.fontSize": 14,
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "icon": "terminal-bash",
+            "path": "~/.bashrc"
+          }
+        },
+        "terminal.integrated.shellIntegration.enabled": false,
+        "terminal.integrated.tabs.focusMode": "singleClick",
+        "workbench.colorTheme": "Gruvbox Dark Hard",
+        "workbench.iconTheme": "vscode-icons",
+        "nix.enableLanguageServer": true,
+        "nix.serverPath": "nixd",
+        "nix.hiddenLanguageServerErrors" : [
+          "textDocument/definition"
+        ],
+        "nix.serverSettings": {
+          "nixd": {
+            "formatting": {
+              "command": [ "nixfmt" ]
+            },
+            "options": {
+              "nixos": {
+                "expr": "(builtins.getFlake \"/home/cbaziret/nixos/system-wide\").nixosConfigurations.default.options"
+              },
+              "home-manager": {
+                "expr": "(builtins.getFlake \"/home/cbaziret/nixos/home-manager\").homeConfigurations.\"cbaziret\".options"
+              }
+            }
+          }
+        }
+      }'';
   };
 
 }

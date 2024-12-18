@@ -7,8 +7,8 @@
 }:
 
 let
+  home-manager-path = ./home-manager/home.nix;
 in
-# home-manager-path = ./home-manager/home.nix;
 {
   imports = [
     ./hardware-configuration.nix
@@ -70,8 +70,6 @@ in
       "wheel"
       "docker"
     ];
-    packages = with pkgs; [
-    ];
   };
 
   services.xserver.displayManager.gdm.enable = true;
@@ -114,20 +112,14 @@ in
     "flakes"
   ];
 
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
   # virtualisation.virtualbox.host.enable = true;
   # users.extraGroups.vboxusers.members = [ "cbaziret" ];
   # virtualisation.virtualbox.host.enableExtensionPack = true;
   # virtualisation.virtualbox.guest.enable = true;
   # virtualisation.virtualbox.guest.dragAndDrop = true;
   # virtualisation.virtualbox.guest.clipboard = true;
-
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      # Add additional package names here
-      pkgs.teams
-      pkgs.vscode
-    ];
 
   networking.firewall.allowedUDPPorts = [ 8080 ];
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -167,6 +159,7 @@ in
     unzip
     gnutar
     nixfmt-rfc-style
+    nixd
 
     # Gnome related
     gnome-tweaks
