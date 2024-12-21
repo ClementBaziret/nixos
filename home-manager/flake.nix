@@ -8,13 +8,22 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      nix-vscode-extensions,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      vscode-extensions = nix-vscode-extensions.extensions.${system};
     in
     {
       homeConfigurations."cbaziret" = home-manager.lib.homeManagerConfiguration {
@@ -26,6 +35,9 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+        extraSpecialArgs = {
+          inherit vscode-extensions;
+        };
       };
     };
 }

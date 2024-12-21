@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  vscode-extensions,
   ...
 }:
 
@@ -12,7 +13,11 @@ rec {
   home.stateVersion = "24.11";
 
   imports = [
-    ./vscode.nix
+    (import ./vscode.nix {
+      pkgs = pkgs;
+      inherit lib;
+      inherit vscode-extensions;
+    })
     ./gnome.nix
     ./bash.nix
     ./git.nix

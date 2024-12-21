@@ -1,10 +1,13 @@
 {
-  config,
   pkgs,
   lib,
+  vscode-extensions,
   ...
 }:
 
+let
+  extensions = vscode-extensions;
+in
 {
   nixpkgs.config.allowUnfreePredicate =
     pkg:
@@ -32,41 +35,44 @@
     enable = true;
     mutableExtensionsDir = false;
 
-    extensions = with pkgs.vscode-extensions; [
-      # Graphical extensions
-      jdinhlife.gruvbox
+    extensions =
+      with extensions.vscode-marketplace;
+      with pkgs.vscode-extensions;
+      [
+        # Graphical extensions
+        jdinhlife.gruvbox
 
-      # Utility extensions
-      ms-vscode-remote.remote-ssh
-      ritwickdey.liveserver
-      vscode-icons-team.vscode-icons
-      eamodio.gitlens
-      ms-azuretools.vscode-docker
-      ms-vscode-remote.remote-containers
-      adpyke.codesnap
-      iliazeus.vscode-ansi
-      vadimcn.vscode-lldb
-      ms-vscode.live-server
+        # Utility extensions
+        ms-vscode-remote.remote-ssh
+        ritwickdey.liveserver
+        vscode-icons-team.vscode-icons
+        eamodio.gitlens
+        ms-azuretools.vscode-docker
+        ms-vscode-remote.remote-containers
+        adpyke.codesnap
+        iliazeus.vscode-ansi
+        vadimcn.vscode-lldb
+        ms-vscode.live-server
 
-      # Code language extensions
-      ms-vscode.cpptools
-      xaver.clang-format
-      ms-vscode.cmake-tools
-      twxs.cmake
-      dart-code.flutter
-      dart-code.dart-code
-      ms-python.python
-      ms-python.debugpy
-      ms-python.vscode-pylance
-      rust-lang.rust-analyzer
-      haskell.haskell
-      vue.volar
-      ecmel.vscode-html-css
+        # Code language extensions
+        ms-vscode.cpptools
+        xaver.clang-format
+        ms-vscode.cmake-tools
+        twxs.cmake
+        dart-code.flutter
+        dart-code.dart-code
+        ms-python.python
+        ms-python.debugpy
+        ms-python.vscode-pylance
+        rust-lang.rust-analyzer
+        haskell.haskell
+        vue.volar
+        ecmel.vscode-html-css
 
-      # Nix related extensions
-      jnoortheen.nix-ide
-      # mkhl-direnv
-    ];
+        # Nix related extensions
+        jnoortheen.nix-ide
+        # mkhl-direnv
+      ];
 
     keybindings = [
       {
