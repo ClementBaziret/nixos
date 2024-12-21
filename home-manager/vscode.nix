@@ -41,6 +41,8 @@ in
       [
         # Graphical extensions
         jdinhlife.gruvbox
+        sdras.night-owl
+        siris01.catppuccin-theme
 
         # Utility extensions
         ms-vscode-remote.remote-ssh
