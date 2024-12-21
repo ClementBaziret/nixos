@@ -41,24 +41,26 @@ in
       [
         # Graphical extensions
         jdinhlife.gruvbox
+        sdras.night-owl
+        teabyii.ayu
+        sveggiani.vscode-field-lights
 
         # Utility extensions
         ms-vscode-remote.remote-ssh
-        ritwickdey.liveserver
         vscode-icons-team.vscode-icons
         eamodio.gitlens
-        ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-containers
+        # ms-azuretools.vscode-docker
+        # ms-vscode-remote.remote-containers
         adpyke.codesnap
         iliazeus.vscode-ansi
         vadimcn.vscode-lldb
-        ms-vscode.live-server
+        # ms-vscode.live-server
 
         # Code language extensions
         ms-vscode.cpptools
         xaver.clang-format
         ms-vscode.cmake-tools
-        twxs.cmake
+        # twxs.cmake
         dart-code.flutter
         dart-code.dart-code
         ms-python.python
@@ -115,7 +117,7 @@ in
         },
         "terminal.integrated.shellIntegration.enabled": false,
         "terminal.integrated.tabs.focusMode": "singleClick",
-        "workbench.colorTheme": "Gruvbox Dark Hard",
+        "workbench.colorTheme": "Ayu Mirage Bordered",
         "workbench.iconTheme": "vscode-icons",
         "nix.enableLanguageServer": true,
         "nix.serverPath": "nixd",
