@@ -30,12 +30,17 @@
       gb = "git branch";
       gc = "git commit";
       gcm = "git commit -m";
+      gca = "git commit --amend";
       gp = "git push";
       gpl = "git pull";
       gcl = "git clone";
       gsth = "git stash";
       gsthp = "git stash pop";
       gsw = "git switch";
+      gm = "git merge";
+      gr = "git rebase";
+      gl = "git log";
+      gd = "git diff";
 
       # SSH key aliases
       "new-ssh-key" = "ssh-keygen -t ed25519 -C 'clement.baziret@epitech.eu'";
