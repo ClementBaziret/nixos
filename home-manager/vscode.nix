@@ -124,8 +124,10 @@ in
         "terminal.integrated.shellIntegration.enabled": false,
         "terminal.integrated.tabs.focusMode": "singleClick",
         "workbench.colorTheme": "Ayu Mirage Bordered",
-        "workbench.iconTheme": "vscode-icons"
+        "workbench.iconTheme": "vscode-icons",
+        "editor.fontFamily": "MartianMono Nerd Font",
+        "editor.fontSize": 13
       }'';
   };
-
+  # "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace "
 }
