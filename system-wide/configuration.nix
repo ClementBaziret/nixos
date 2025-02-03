@@ -160,6 +160,7 @@ in
     gnutar
     nixfmt-rfc-style
     nixd
+    libreoffice-still
 
     # Gnome related
     gnome-tweaks
