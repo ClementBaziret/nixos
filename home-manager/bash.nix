@@ -32,15 +32,19 @@
       gcm = "git commit -m";
       gca = "git commit --amend";
       gp = "git push";
+      gf = "git fetch";
       gpl = "git pull";
       gcl = "git clone";
       gsth = "git stash";
       gsthp = "git stash pop";
       gsw = "git switch";
       gm = "git merge";
-      gr = "git rebase";
+      grb = "git rebase";
       gl = "git log";
       gd = "git diff";
+
+      # Docker aliases
+      dc = "docker-compose";
 
       # SSH key aliases
       "new-ssh-key" = "ssh-keygen -t ed25519 -C 'clement.baziret@epitech.eu'";
