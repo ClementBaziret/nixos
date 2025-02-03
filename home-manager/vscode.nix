@@ -27,6 +27,8 @@ in
           ms-python.python
           ms-python.debugpy
           ms-python.vscode-pylance
+          ms-dotnettools.vscode-dotnet-runtime
+          ms-dotnettools.csharp
         ])
       )
     );
@@ -70,6 +72,10 @@ in
         haskell.haskell
         vue.volar
         ecmel.vscode-html-css
+        visualstudiotoolsforunity.vstuc
+        ms-dotnettools.vscode-dotnet-runtime
+        ms-dotnettools.csharp
+        # llvm-vs-code-extensions.vscode-clangd
 
         # Nix related extensions
         jnoortheen.nix-ide
@@ -119,26 +125,6 @@ in
         "terminal.integrated.tabs.focusMode": "singleClick",
         "workbench.colorTheme": "Ayu Mirage Bordered",
         "workbench.iconTheme": "vscode-icons",
-        "nix.enableLanguageServer": true,
-        "nix.serverPath": "nixd",
-        "nix.hiddenLanguageServerErrors" : [
-          "textDocument/definition"
-        ],
-        "nix.serverSettings": {
-          "nixd": {
-            "formatting": {
-              "command": [ "nixfmt" ]
-            },
-            "options": {
-              "nixos": {
-                "expr": "(builtins.getFlake \"/home/cbaziret/nixos/system-wide\").nixosConfigurations.default.options"
-              },
-              "home-manager": {
-                "expr": "(builtins.getFlake \"/home/cbaziret/nixos/home-manager\").homeConfigurations.\"cbaziret\".options"
-              }
-            }
-          }
-        }
       }'';
   };
 
