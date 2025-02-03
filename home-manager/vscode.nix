@@ -124,7 +124,7 @@ in
         "terminal.integrated.shellIntegration.enabled": false,
         "terminal.integrated.tabs.focusMode": "singleClick",
         "workbench.colorTheme": "Ayu Mirage Bordered",
-        "workbench.iconTheme": "vscode-icons",
+        "workbench.iconTheme": "vscode-icons"
       }'';
   };
 
