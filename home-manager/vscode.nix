@@ -126,7 +126,27 @@ in
         "workbench.colorTheme": "Ayu Mirage Bordered",
         "workbench.iconTheme": "vscode-icons",
         "editor.fontFamily": "MartianMono Nerd Font",
-        "editor.fontSize": 13
+        "editor.fontSize": 13,
+        "nix.hiddenLanguageServerErrors" : [
+          "textDocument/definition"
+        ],
+        "nix.enableLanguageServer": true,
+        "nix.serverPath": "nixd",
+        "nix.serverSettings": {
+          "nixd": {
+            "formatting": {
+              "command": [ "nixfmt" ]
+            },
+            "options": {
+              "nixos": {
+                "expr": "(builtins.getFlake \"/home/cbaziret/nixos/system-wide\").nixosConfigurations.default.options"
+              },
+              "home-manager": {
+                "expr": "(builtins.getFlake \"/home/cbaziret/nixos/home-manager\").homeConfigurations.\"cbaziret\".options"
+              }
+            }
+          }
+        }
       }'';
   };
   # "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace "
