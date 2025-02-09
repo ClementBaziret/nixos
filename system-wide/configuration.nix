@@ -72,13 +72,18 @@ in
     ];
   };
 
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  # services.gnome.core-utilities.enable = false;  # disable all the gnome default applications
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-console
-    epiphany # web browser
-  ];
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  environment.sessionVariables.NIXOS_OZONE_WL = 1;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  # # services.gnome.core-utilities.enable = false;  # disable all the gnome default applications
+  # environment.gnome.excludePackages = with pkgs; [
+  #   gnome-console
+  #   epiphany # web browser
+  # ];
 
   boot.loader.grub.configurationLimit = 15;
 
@@ -162,10 +167,10 @@ in
     nixd
     libreoffice-still
 
-    # Gnome related
-    gnome-tweaks
-    gnome-terminal
-    dconf-editor
+    # # Gnome related
+    # gnome-tweaks
+    # gnome-terminal
+    # dconf-editor
 
     # man and documentation
     man
@@ -173,6 +178,9 @@ in
     llvm-manpages
     man-pages
     man-pages-posix
+    kitty
+    wofi
+    dolphin
   ];
 
   # nixpkgs.config.permittedInsecurePackages = [
