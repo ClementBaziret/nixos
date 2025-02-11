@@ -130,6 +130,10 @@ in
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.enable = false;
 
+  fonts.packages = with pkgs; [
+    nerdfonts
+  ];
+
   # List of the nix packages installed system-wide
   environment.systemPackages = with pkgs; [
     # Nix important packages
@@ -156,7 +160,6 @@ in
     sqlite
     postman
     docker-compose
-    nerdfonts
     mediawriter
     grub2
     gparted
