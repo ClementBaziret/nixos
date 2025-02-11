@@ -19,6 +19,7 @@
     "xhci_pci"
     "usb_storage"
     "sd_mod"
+    "usbhid"
     "rtsx_pci_sdmmc"
   ];
   boot.initrd.kernelModules = [ ];
@@ -31,7 +32,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6610-B251";
+    device = "/dev/disk/by-uuid/E09E-A510";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -46,6 +47,10 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-c86501d7cd87.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-d616267e022f.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.vethbadce4c.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
