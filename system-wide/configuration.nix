@@ -169,6 +169,8 @@ in
     nixfmt-rfc-style
     nixd
     libreoffice-still
+    btop
+    lazygit
 
     # # Gnome related
     # gnome-tweaks
