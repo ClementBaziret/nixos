@@ -43,6 +43,12 @@
     };
   };
 
+  home.packages = with pkgs; [
+    brightnessctl
+    wireplumber
+    playerctl
+  ];
+
   wayland.windowManager.hyprland.settings = {
     xwayland = {
       force_zero_scaling = true;
@@ -96,7 +102,7 @@
     "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
 
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-    "bind" = [
+    bind = [
       "$mainMod, Q, exec, $terminal"
       "$mainMod, C, killactive,"
       "$mainMod, M, exit,"
@@ -106,6 +112,21 @@
       "$mainMod, P, pseudo," # dwindle
       "$mainMod, J, togglesplit," # dwindle
       "$mainMod, L, exec, hyprlock" # dwindle
+    ];
+
+    bindel = [
+      ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ", XF86MonBrightnessUp, exec, brightnessctl s 5%+"
+      ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
+    ];
+    bindl = [
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPause, exec, playerctl play-pause"
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioPrev, exec, playerctl previous"
     ];
   };
 }
