@@ -130,6 +130,8 @@ in
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.enable = false;
 
+  services.tailscale.enable = true;
+
   fonts.packages = with pkgs; [
     nerdfonts
   ];
