@@ -92,7 +92,11 @@
       workspace_swipe = true;
     };
 
-    "monitor" = "eDP-1, 1920x1080@144, 0x0, 1";
+    # hyprctl monitors all
+    monitor = [
+      "eDP-1, 1920x1080@60, 0x0, 1"
+      "HDMI-A-1, 1920x1080@60, 0x-1080, 1"
+    ];
 
     "$terminal" = "kitty";
     "$fileManager" = "dolphin";
