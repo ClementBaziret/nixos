@@ -52,6 +52,7 @@
       # Utility aliases
       # cat = "bat";
       tree = "eza -T";
+      net-mg = "nmtui";
     };
 
     bashrcExtra =
