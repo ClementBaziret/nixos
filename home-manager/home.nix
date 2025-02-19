@@ -24,6 +24,7 @@ rec {
     })
     # ./gnome.nix
     ./hyprland/hyprland.nix
+    ./hyprland/eww.nix
     ./bash.nix
     ./git.nix
   ];
@@ -38,12 +39,6 @@ rec {
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
-  programs.eww = {
-    enable = true;
-    enableBashIntegration = true;
-    configDir = pkgs.eww;
-  };
 
   # Home Manager is pretty good at managing dotfiles. The primary
   # way to manage plain files is through 'home.file'.
