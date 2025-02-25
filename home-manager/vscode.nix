@@ -91,16 +91,7 @@ in
     ];
     userSettings = builtins.fromJSON ''
       {
-        "[dart]": {
-          "editor.formatOnSave": true,
-          "editor.formatOnType": false,
-          "editor.rulers": [
-            80
-          ],
-          "editor.selectionHighlight": false,
-          "editor.tabCompletion": "onlySnippets",
-          "editor.wordBasedSuggestions": "off"
-        },
+        "window.titleBarStyle": "custom",
         "codesnap.realLineNumbers": false,
         "codesnap.roundedCorners": true,
         "codesnap.showLineNumbers": true,
