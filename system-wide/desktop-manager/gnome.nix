@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
-  lib,
   ...
 }:
 
@@ -17,5 +14,11 @@
   environment.gnome.excludePackages = with pkgs; [
     gnome-console
     epiphany # web browser
+  ];
+
+  environment.systemPackages = with pkgs; [
+    gnome-tweaks
+    gnome-terminal
+    dconf-editor
   ];
 }

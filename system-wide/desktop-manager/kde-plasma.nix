@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
-  lib,
   ...
 }:
 
@@ -14,6 +11,10 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+  # environment.plasma6.excludePackages = with pkgs; [
+  #   kdePackages.elisa
+  # ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = 1;
 

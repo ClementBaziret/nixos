@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
-  lib,
   ...
 }:
 
@@ -40,7 +37,6 @@
     bat
     wget
     tree
-    zsh
     sqlite
     postman
     docker-compose
@@ -55,13 +51,8 @@
     libreoffice-still
     btop
     lazygit
-    rustdesk
-    remmina
-
-    # # Gnome related
-    # gnome-tweaks
-    # gnome-terminal
-    # dconf-editor
+    wofi
+    dolphin
 
     # man and documentation
     man
@@ -69,9 +60,6 @@
     llvm-manpages
     man-pages
     man-pages-posix
-    kitty
-    wofi
-    dolphin
   ];
 
   # nixpkgs.config.permittedInsecurePackages = [
