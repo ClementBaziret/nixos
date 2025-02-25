@@ -22,11 +22,11 @@ rec {
       inherit lib;
       inherit (home) username;
     })
-    # ./gnome.nix
-    ./hyprland/hyprland.nix
-    ./hyprland/eww.nix
     ./bash.nix
     ./git.nix
+    # ./gnome.nix
+    # ./hyprland/hyprland.nix
+    # ./hyprland/eww.nix
   ];
 
   home.sessionVariables = {
