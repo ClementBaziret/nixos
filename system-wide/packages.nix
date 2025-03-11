@@ -53,6 +53,7 @@
     lazygit
     wofi
     dolphin
+    obsidian
 
     # man and documentation
     man
