@@ -105,7 +105,7 @@ in
         "files.autoSave": "onFocusChange",
         "terminal.integrated.defaultLocation": "view",
         "terminal.integrated.fontFamily": "MartianMono Nerd Font",
-        "terminal.integrated.fontSize": 14,
+        "terminal.integrated.fontSize": 12,
         "terminal.integrated.profiles.linux": {
           "bash": {
             "icon": "terminal-bash",
@@ -117,7 +117,7 @@ in
         "workbench.colorTheme": "Ayu Mirage Bordered",
         "workbench.iconTheme": "vscode-icons",
         "editor.fontFamily": "MartianMono Nerd Font",
-        "editor.fontSize": 13,
+        "editor.fontSize": 12,
         "nix.hiddenLanguageServerErrors" : [
           "textDocument/definition"
         ],
