@@ -54,6 +54,8 @@
     wofi
     dolphin
     obsidian
+    notepadqq
+    gimp
 
     # man and documentation
     man
