@@ -17,6 +17,7 @@ in
     ./network.nix
     ./user.nix
     ./packages.nix
+    ./bluetooth.nix
     # ./virtualbox.nix
   ];
 
