@@ -105,7 +105,7 @@ in
         "files.autoSave": "onFocusChange",
         "terminal.integrated.defaultLocation": "view",
         "terminal.integrated.fontFamily": "MartianMono Nerd Font",
-        "terminal.integrated.fontSize": 12,
+        "terminal.integrated.fontSize": 13,
         "terminal.integrated.profiles.linux": {
           "bash": {
             "icon": "terminal-bash",
@@ -117,7 +117,7 @@ in
         "workbench.colorTheme": "Ayu Mirage Bordered",
         "workbench.iconTheme": "vscode-icons",
         "editor.fontFamily": "MartianMono Nerd Font",
-        "editor.fontSize": 12,
+        "editor.fontSize": 13,
         "nix.hiddenLanguageServerErrors" : [
           "textDocument/definition"
         ],
@@ -137,8 +137,12 @@ in
               }
             }
           }
+        },
+        "workbench.colorCustomizations": {
+          "minimap.background": "#24293655"
         }
       }'';
   };
+  # "editor.background": "#212733FF"
   # "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace "
 }
