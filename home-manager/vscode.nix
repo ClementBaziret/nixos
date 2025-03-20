@@ -88,6 +88,17 @@ in
         command = "terminal.focus";
         when = null;
       }
+      {
+        key = "ctrl+e";
+        command = "-workbench.action.quickOpen";
+        when = null;
+      }
+      {
+        key = "ctrl+e";
+        command = "workbench.files.action.showActiveFileInExplorer";
+        when = "editorFocus";
+      }
+
     ];
     userSettings = builtins.fromJSON ''
       {
@@ -140,7 +151,8 @@ in
         },
         "workbench.colorCustomizations": {
           "minimap.background": "#24293655"
-        }
+        },
+        "explorer.autoReveal": false
       }'';
   };
   # "editor.background": "#212733FF"
