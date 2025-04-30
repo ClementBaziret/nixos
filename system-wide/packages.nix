@@ -7,6 +7,7 @@
   services.tailscale.enable = true;
   services.printing.enable = true;
   programs.firefox.enable = true;
+  programs.ssh.startAgent = true;
   # services.openssh.enable = true;
 
   virtualisation.docker.enable = true;
