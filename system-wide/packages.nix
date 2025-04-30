@@ -13,9 +13,9 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
+  fonts.packages =
+    with pkgs;
+    [ ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   environment.systemPackages = with pkgs; [
     # Nix important packages
@@ -51,8 +51,6 @@
     libreoffice-still
     btop
     lazygit
-    wofi
-    dolphin
     obsidian
     notepadqq
     gimp

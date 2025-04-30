@@ -24,6 +24,7 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.configurationLimit = 15;
+  boot.loader.timeout = null;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
