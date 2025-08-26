@@ -19,8 +19,7 @@
     initExtra = "";
     shellAliases = {
       # NixOS related aliases
-      rebuild = "sudo nixos-rebuild switch --flake /home/cbaziret/nixos/system-wide/#default";
-      rebuild-hm = "home-manager switch --flake /home/cbaziret/nixos/home-manager/#cbaziret";
+      rebuild-hm = "home-manager switch --flake /home/cbaziret/dotfiles/home-manager/#cbaziret";
       configuration-doc = "man configuration.nix";
       home-manager-doc = "man home-configuration.nix";
 
@@ -73,6 +72,20 @@
       in
       ''
         ${complete-alias-commands}
+        
+        # Source global definitions
+        if [ -f /etc/bashrc ]; then
+            . /etc/bashrc
+        fi
+
+        # User specific environment
+        if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+            PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+        fi
+        export PATH
+
+        # Add nix in PATH
+        source $HOME/.nix-profile/etc/profile.d/nix.sh
       '';
   };
 }
